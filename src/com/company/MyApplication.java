@@ -15,18 +15,13 @@ public class MyApplication {
 
     public void start() {
         while (true) {
-            System.out.println("Choose one option:\n 1) Add new student \n " + "2) Study \n " + "0) Exit\n");
+            System.out.println("Choose one option:\n1) Add new student \n " + "2) Study \n " + "0) Exit\n");
             int choice = scanner.nextInt();
 
-            if (choice == 1) {
-                addStudent();
-            }
-            else if(choice==2){
-
-            }
-            else {
-                break;
-            }
+            if (choice == 1) addStudent();
+            else if(choice==2) getStudentByHighestScoreMenu();
+            else if(choice==3) changeEmailByIdMenu();
+            else break;
 
             System.out.println("____________________________");
         }
@@ -50,5 +45,19 @@ public class MyApplication {
         result = centreController.addStudent(first_name,last_name,age,email,score,group_id);
 
         System.out.println(result);
+    }
+
+    public void getStudentByHighestScoreMenu() {
+        System.out.println(centreController.getStudentByHighestScore());
+    }
+
+    public void changeEmailByIdMenu() {
+        System.out.println("Please write where do you want to change email(students, mentors, teachers)");
+        String table = scanner.next();
+        System.out.println("Please write an id");
+        int id = scanner.nextInt();
+        System.out.println("Please write a new email");
+        String email = scanner.next();
+        System.out.println(centreController.changeEmailById(id,email,table));
     }
 }

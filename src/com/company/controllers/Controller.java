@@ -19,4 +19,14 @@ public class Controller {
         return "Student was not added";
     }
 
+    public String getStudentByHighestScore() {
+        return repository.getStudentByHighestScore().toString();
+    }
+
+    public String changeEmailById(int id, String email, String table) {
+        boolean change = repository.changeEmailById(id, email, table);
+        if(change) return "Email has updated";
+        return "Email has not updated";
+    }
+
 }
